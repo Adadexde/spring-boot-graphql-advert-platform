@@ -1,0 +1,65 @@
+directive @requiredIsLoggedIn on FIELD_DEFINITION
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    password: String!
+    roles: [String!]!
+}
+
+type Advert {
+    id: ID!
+    title: String!
+    description: String!
+    price: Float!
+    author: User!
+}
+
+input CreateUserInput {
+    username: String!
+    email: String!
+    password: String!
+}
+
+input DeleteUserInput {
+    id: ID!
+}
+
+input UpdateUserInput {
+    id: ID!
+    username: String
+}
+
+input AuthenticationUserInput {
+    email: String!
+    password: String!
+}
+
+input CreateAdvertInput {
+    title: String!
+    description: String!
+    price: Float!
+}
+
+input DeleteAdvertInput {
+    id: ID!
+}
+
+type Query {
+    users: [User!]!
+    currentUser: User @requiredIsLoggedIn
+
+    adverts: [Advert!]!
+    advert(id: ID!):Advert
+}
+
+type Mutation {
+    createUser(input: CreateUserInput!): Boolean!
+    deleteUser(input: DeleteUserInput!): Boolean! @requiredIsLoggedIn
+    updateUser(input: UpdateUserInput!): User! @requiredIsLoggedIn
+    authentication(input: AuthenticationUserInput!): String!
+
+    createAdvert(input: CreateAdvertInput!): Advert! @requiredIsLoggedIn
+    deleteAdvert(input: DeleteAdvertInput!): Boolean! @requiredIsLoggedIn
+}
