@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{/css/home.css}"/>
     <title>Home</title>
   </head>
   <body>
     <p id="message"></p>
 
-    <article id="advert-container"></article>
+    <div id="advert-container"></div>
 
     <script>
       const message = document.getElementById("message");
@@ -49,11 +50,11 @@
         advertContainer.innerHTML = adverts.map(
           (
             advert
-          ) => `<div key="${advert.id}" style="border: 1px solid black; padding: 10px;">
+          ) => `<div key="${advert.id}" style="display: flex; flex-direction: column; align-items: start; border: 1px solid #d1cece; padding: 10px; border-radius: 12px;">
             <h2>${advert.title}</h2>
             <p>${advert.description}</p>
             <p>Price - ${advert.price}</p>
-            <button id="delete-advert-button-${advert.id}">Delete Advert</button>
+            <button style="background-color: blue; border: none; border-radius: 12px; color: white;" id="delete-advert-button-${advert.id}">Delete Advert</button>
             </div>`
         );
       }

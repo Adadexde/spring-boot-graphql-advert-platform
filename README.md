@@ -37,9 +37,9 @@ This project is a web platform where users can create and manage advertisements.
 - The app runs at `http://localhost:8080` by default.
 - GraphQL endpoint: `http://localhost:8080/graphql`
 - Web interfaces:
-  - Register: `/auth/register`
-  - Login: `/auth/login`
-  - Create advert: `/advert/create`
+  - Register: `/register`
+  - Login: `/login`
+  - Create advert: `/create`
 - After login, your JWT token is stored in localStorage and used automatically for ad operations.
 
 ## GraphQL API
